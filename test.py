@@ -6,7 +6,8 @@ mycol = mydb["repos"]
 
 myquery = { "name": "akka" }
 
-mydoc = mycol.find(myquery)
+#mydoc = mycol.find(myquery)
+mydoc = mycol.distinct("name")
 
 for x in mydoc:
   print(x)
