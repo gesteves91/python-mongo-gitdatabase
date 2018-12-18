@@ -2,9 +2,9 @@ import pymongo
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["msr14"]
-mycol = mydb["commits"]
+mycol = mydb["repos"]
 
-myquery = { "": "Park Lane 38" }
+myquery = { "name": "akka" }
 
 mydoc = mycol.find(myquery)
 
