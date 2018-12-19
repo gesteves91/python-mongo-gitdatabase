@@ -7,7 +7,11 @@ mycol = mydb["commits"]
 #myquery = { "_id": "52343e2ebd3543bb7f000002" }
 
 #mydoc = mycol.find(myquery)
-mydoc = mycol.sha.findOne()
+#mydoc = mycol.distinct("committer.id")
+cursor = mycol.find({})
 
-for x in mydoc:
-  print(x)
+for document in cursor: 
+    print(document.keys())  # print all fields of this document.
+
+#for x in mydoc:
+#  print(x)
