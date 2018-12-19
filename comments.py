@@ -4,7 +4,7 @@ myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["msr14"]
 mycol = mydb["commits_comments"]
 
-myquery = { "commit_id": "390328" }
+myquery = { "id": "390328" }
 
 mydoc = mycol.find(myquery)
 
