@@ -8,10 +8,10 @@ mycol = mydb["commits"]
 
 #mydoc = mycol.find(myquery)
 #mydoc = mycol.distinct("committer.id")
-cursor = mycol.find({})
+#cursor = mycol.find({})
 
-for document in cursor: 
-    print(document.keys())  # print all fields of this document.
+x = mycol.find_one()
+print(x)
 
 #for x in mydoc:
 #  print(x)
