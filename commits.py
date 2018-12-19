@@ -2,7 +2,7 @@ import pymongo
 
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 mydb = myclient["msr14"]
-mycol = mydb["commits"]
+mycol = mydb["commits.committer"]
 
 #myquery = { "_id": "52343e2ebd3543bb7f000002" }
 
