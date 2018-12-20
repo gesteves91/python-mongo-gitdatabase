@@ -5,6 +5,7 @@ myData = [["first_name", "second_name", "Grade"],
           ['Tom', 'Smith', 'B']]
  
 myFile = open('example2.csv', 'w')
+
 with myFile:
     writer = csv.writer(myFile)
     writer.writerows(myData)
