@@ -6,15 +6,17 @@ mydb = myclient["msr14"]
 mycol = mydb["commits"]
 
 cursor = mycol.find(
-    {}, {'id': 1, 'commit_id': 1, 'body': 1})
+    {}, {'_id': 1, 'commit.message': 1})
 
 with open('stack_039.csv', 'w') as outfile:
-    fields = ['commit.message']
+    fields = ['id', 'commit.message']
     write = csv.DictWriter(outfile, fieldnames=fields)
     write.writeheader()
     for field in cursor:
+        id = field['_id']
         for commits in field['commit']:
             flattened_record = {
+                '_id': id,
                 'answers.message': commits['message']
             }
             write.writerow(flattened_record)
