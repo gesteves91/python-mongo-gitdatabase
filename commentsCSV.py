@@ -5,7 +5,8 @@ mydb = myclient["msr14"]
 mycol = mydb["commit_comments"]
 
 # Get all the unique commit ids.
-mydoc = mycol.find({})
+mydoc = mycol.find({}, {'body': 1})
 
 for x in mydoc:
-  print(x)
+    if x['body'] is not None:
+        print(x['body'])
