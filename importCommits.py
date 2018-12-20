@@ -12,11 +12,11 @@ with open('stack_039.csv', 'w') as outfile:
     fields = ['id', 'commit.message']
     write = csv.DictWriter(outfile, fieldnames=fields)
     write.writeheader()
-    for field in cursor:
-        id = field['_id']
-        for commits in field['commit']:
+    for commits in cursor:
+        id = commits['_id']
+        for commit in commits['commit']:
             flattened_record = {
                 '_id': id,
-                'commit.message': commits['message']
+                'commit.message': commit['message']
             }
             write.writerow(flattened_record)
