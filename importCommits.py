@@ -17,6 +17,6 @@ with open('stack_039.csv', 'w') as outfile:
         for commits in field['commit']:
             flattened_record = {
                 '_id': id,
-                'answers.message': commits['message']
+                'commit.message': commits['message']
             }
             write.writerow(flattened_record)
