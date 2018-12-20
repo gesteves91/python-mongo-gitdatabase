@@ -12,7 +12,7 @@ with open('stack.csv', 'w') as outfile:
     fields = ['id', 'commit_id', 'body']
     write = csv.DictWriter(outfile, fieldnames=fields)
     write.writeheader()
-    for commits in cursor:  
+    for commits in cursor:
         flattened_record = {
             'id': commits['id'],
             'commit_id': commits['commit_id'],
