@@ -9,18 +9,28 @@ cursor = mycol.find(
     {}, {'stats.deletions': 1, 'stats.additions': 1, 'stats.total': 1})
 
 with open('commits.csv', 'w') as outfile:
-    fields = ['stats.deletions', 'stats.additions', 'stats.total']
+    fields = ['deletions', 'additions', 'total']
     write = csv.DictWriter(outfile, fieldnames=fields)
     write.writeheader()
     for commits in cursor:
         if 'stats' in commits:
             stats = commits['stats']
-            print(stats)
+            #print(stats)
+            count = 0
             for key in stats:
-                flattened_record = {
-                'stats.deletions': stats[key],
-                'stats.additions': stats[key],
-                'stats.total': stats[key]
+                if key == 'deletions':
+                    deletions = stats[key]
+                elif key == 'additions':
+                    additions = stats[key]
+                else:
+                    total = stats[key]
+            flattened_record = {
+                'deletions': deletions,
+                'additions': additions,
+                'total': total
                 }
-                write.writerow(flattened_record)
+            write.writerow(flattened_record)
+            #print(count)
+            #if count is not 3:
+            #    print("Somethign is completely wrong!!!")
     print("Writing complete!!!")
