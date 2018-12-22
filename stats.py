@@ -8,8 +8,8 @@ mycol = mydb["commits"]
 cursor = mycol.find(
     {}, {'stats.deletions': 1, 'stats.additions': 1, 'stats.total': 1})
 
-with open('commits.csv', 'w') as outfile:
-    fields = ['deletions', 'additions', 'total']
+with open('total.csv', 'w') as outfile:
+    fields = ['sha', 'message', 'comment_count', 'deletions', 'additions', 'total']
     write = csv.DictWriter(outfile, fieldnames=fields)
     write.writeheader()
     for commits in cursor:
